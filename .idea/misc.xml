@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/AndroidProjects/GoRestTest/app/src/main/res/drawable/icon.xml" value="0.3828125" />
         <entry key="..\:/AndroidProjects/GoRestTest/app/src/main/res/layout/activity_main.xml" value="0.2957427536231884" />
         <entry key="..\:/AndroidProjects/GoRestTest/app/src/main/res/layout/post_item.xml" value="0.2957427536231884" />
       </map>
