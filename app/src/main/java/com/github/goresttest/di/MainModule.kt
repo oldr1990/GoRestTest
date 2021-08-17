@@ -1,7 +1,12 @@
 package com.github.goresttest.di
 
+import androidx.paging.ExperimentalPagingApi
 import com.github.goresttest.constants.GoRestApi.BASE_URL
 import com.github.goresttest.di.retrofit.GoRestApi
+import com.github.goresttest.repository.DefaultRepository
+import com.github.goresttest.repository.RepositoryInterface
+import com.github.goresttest.repository.paging.GoRestMediator
+import com.github.goresttest.repository.room.GoRestDb
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -15,6 +20,14 @@ import javax.inject.Singleton
 @Module
 @InstallIn(SingletonComponent::class)
 object MainModule {
+    @ExperimentalPagingApi
+    @Singleton
+    @Provides
+    fun provideRepository(
+        goRestMediator: GoRestMediator,
+        goDataBase: GoRestDb
+    ): RepositoryInterface = DefaultRepository(goRestMediator, goDataBase)
+
     @Singleton
     @Provides
     fun provideOkHTTP(): OkHttpClient =

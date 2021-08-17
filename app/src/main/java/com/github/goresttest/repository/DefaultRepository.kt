@@ -7,19 +7,20 @@ import com.github.goresttest.repository.room.GoRestDb
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
+@ExperimentalPagingApi
 class DefaultRepository
-    @ExperimentalPagingApi
-    @Inject constructor(
-        private val mediator: GoRestMediator,
-        private val database: GoRestDb,
-    ):RepositoryInterface {
+    (
+    private val mediator: GoRestMediator,
+    private val database: GoRestDb,
+) : RepositoryInterface {
     private val databaseDao = database.PostRoomDao()
+
     @ExperimentalPagingApi
     override suspend fun searchPosts(): Flow<PagingData<PostRoom>> =
         Pager(
-            config = PagingConfig(20),
+            config = PagingConfig(1),
             remoteMediator = mediator
-        ){
+        ) {
             databaseDao.getPosts()
         }.flow
 }

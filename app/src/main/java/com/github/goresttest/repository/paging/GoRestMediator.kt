@@ -29,11 +29,12 @@ class GoRestMediator
                 LoadType.REFRESH -> null
                 LoadType.PREPEND -> return MediatorResult.Success(endOfPaginationReached = true)
                 LoadType.APPEND -> {
-                    val lastItem = state.lastItemOrNull()
+                   state.anchorPosition ?: 0 + 1
+                    /*val lastItem = state.lastItemOrNull()
                         ?: return MediatorResult.Success(
                             endOfPaginationReached = true
                         )
-                    state.anchorPosition
+                    */
                 }
             }
 
